@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Fagkveld_Nov26_ML"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b85d156f-9530-40d7-a311-ee4f56a42349"
+  }
+}

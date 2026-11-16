@@ -1,0 +1,25 @@
+relationship AutoDetected_7608982a-4786-42ed-8a36-2ee322ac16f8
+	fromColumn: fact_orders.CustomerKey
+	toColumn: dim_customer.CustomerKey
+
+relationship AutoDetected_d61bedfb-cff5-4a0e-aa43-030914321242
+	fromColumn: fact_sales.CustomerKey
+	toColumn: dim_customer.CustomerKey
+
+relationship AutoDetected_14e03d78-028e-4624-8165-e6dfd0379465
+	fromColumn: fact_sales.ProductKey
+	toColumn: dim_product.ProductKey
+
+relationship AutoDetected_a684300d-e592-450d-9d95-66589268f233
+	fromColumn: fact_orders.StoreKey
+	toColumn: dim_store.StoreKey
+
+relationship AutoDetected_1a10263e-dea1-4224-8be2-f2105c1b3fe4
+	fromColumn: fact_sales.StoreKey
+	toColumn: dim_store.StoreKey
+
+relationship AutoDetected_7c08c093-ddc2-4b4c-9978-7bc3f2076193
+	isActive: false
+	fromColumn: fact_sales.OrderKey
+	toColumn: fact_orders.OrderKey
+

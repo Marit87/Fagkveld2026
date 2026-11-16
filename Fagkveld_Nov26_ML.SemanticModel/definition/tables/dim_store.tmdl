@@ -1,0 +1,112 @@
+table dim_store
+	lineageTag: 5d6f9eda-679d-40b0-a29c-fd25d76ac880
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b7abf82-c7b3-4fd6-9102-0392a96d35ff
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreCode
+		dataType: int64
+		formatString: 0
+		lineageTag: f7d1ae11-d9c6-45b2-98b9-9aad099498c2
+		summarizeBy: count
+		sourceColumn: StoreCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeoAreaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b8b9dfd-114f-46d9-8628-0cb6de082fd5
+		summarizeBy: count
+		sourceColumn: GeoAreaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryCode
+		dataType: string
+		lineageTag: 7c1932f4-bde7-4fa1-9ef6-0fe848e11a57
+		summarizeBy: none
+		sourceColumn: CountryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryName
+		dataType: string
+		lineageTag: 50f43377-2d94-46d3-be34-dcb99a5db760
+		summarizeBy: none
+		sourceColumn: CountryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 84f16737-d7a2-4973-bedc-8e58992ba096
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7dfad8e6-c0b6-46a6-a53f-c97c3d3022e3
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CloseDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ebb4615b-6c40-4909-8082-b8234d811c0d
+		summarizeBy: none
+		sourceColumn: CloseDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Description
+		dataType: string
+		lineageTag: 2456f103-0b7b-4996-b250-ca5b476f978b
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column SquareMeters
+		dataType: int64
+		formatString: 0
+		lineageTag: 1251671e-d7e2-4da6-8402-a9c31f37af51
+		summarizeBy: sum
+		sourceColumn: SquareMeters
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: bab25466-cafb-4d2c-b874-e582c4c568ef
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_store = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("ol5bpq4twpvejkd45its5dmwhu-c4dybdj367iu3dzudtnsqixv4q.datawarehouse.fabric.microsoft.com", "Contuso_1M"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "dim_store"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

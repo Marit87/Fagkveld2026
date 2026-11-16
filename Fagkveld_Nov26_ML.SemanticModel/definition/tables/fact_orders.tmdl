@@ -1,0 +1,71 @@
+table fact_orders
+	lineageTag: d14ea032-1f05-4423-ac7d-3ca7640dc84e
+
+	column OrderKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 692434f3-d77a-4447-bc76-545b9ca22b80
+		summarizeBy: count
+		sourceColumn: OrderKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 235057e2-b262-4680-a0e2-2d26e1b1acd2
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 01331265-8d34-46a4-9ebe-fb6e7c9057b9
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b88ffb94-8e9b-49c0-af73-f6b6d7f15acd
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DeliveryDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ce0bea57-ea25-4102-82d2-8a4fc79af511
+		summarizeBy: none
+		sourceColumn: DeliveryDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CurrencyCode
+		dataType: string
+		lineageTag: 73a316e6-e4ea-4283-a45e-4a2b7c540fd2
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_orders = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("ol5bpq4twpvejkd45its5dmwhu-c4dybdj367iu3dzudtnsqixv4q.datawarehouse.fabric.microsoft.com", "Contuso_1M"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "fact_orders"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

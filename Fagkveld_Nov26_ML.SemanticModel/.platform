@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Fagkveld_Nov26_ML"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "815dba4f-170e-4cf1-b204-1e3980e4b8af"
+  }
+}

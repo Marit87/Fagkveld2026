@@ -1,0 +1,136 @@
+table dim_product
+	lineageTag: 9f13adcc-3848-4294-a6e0-a8359637a9b7
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ae83de4-51b0-43f0-8a69-e927ecfac0cf
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCode
+		dataType: int64
+		formatString: 0
+		lineageTag: e9d06279-b48d-4e4e-8d36-94f5632428f2
+		summarizeBy: none
+		sourceColumn: ProductCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: cb822fa1-3606-4350-9ba7-ade95c874f6d
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Manufacturer
+		dataType: string
+		lineageTag: 5e9885fd-4e69-4ce9-bd37-ed895c651cc3
+		summarizeBy: none
+		sourceColumn: Manufacturer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: 694f5258-48be-47e8-8385-d9bba00e57b7
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 5992fe8b-2a84-4fc3-8e88-8eb4c56b9a3f
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeightUnit
+		dataType: string
+		lineageTag: 2c1f296c-fe1a-4d2a-a4e3-15ca089cf288
+		summarizeBy: none
+		sourceColumn: WeightUnit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weight
+		dataType: double
+		lineageTag: e213689c-a5f1-4016-a167-3eece2d85e33
+		summarizeBy: none
+		sourceColumn: Weight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Cost
+		dataType: double
+		lineageTag: 07d3b50c-a95d-47ce-88b5-e8c8af68effd
+		summarizeBy: none
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Price
+		dataType: double
+		lineageTag: f36ea6ee-b79e-40dd-b9d6-a436fddd36fe
+		summarizeBy: none
+		sourceColumn: Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 707d5702-d82f-4f2e-b4c9-5cdbd37ee93c
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryName
+		dataType: string
+		lineageTag: b8015db7-9489-45b9-bf4b-d403e16bc8ce
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: d1798aed-a544-4cd0-bf4e-f1962e2402e7
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoryName
+		dataType: string
+		lineageTag: 954cd7a0-5b7e-4d4a-8817-c087682cf859
+		summarizeBy: none
+		sourceColumn: SubCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database("ol5bpq4twpvejkd45its5dmwhu-c4dybdj367iu3dzudtnsqixv4q.datawarehouse.fabric.microsoft.com", "Contuso_1M"),
+				  #"Navigation 1" = Source{[Schema = "dbo", Item = "dim_product"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+
